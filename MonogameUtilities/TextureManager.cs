@@ -5,25 +5,25 @@ namespace MonogameUtilities
 {
     public static class TextureManager
     {
-        private static Dictionary<int, Texture2D> _textures;
+        private static readonly Dictionary<int, Texture2D> Textures;
 
         static TextureManager()
         {
-            _textures = new Dictionary<int, Texture2D>();
+            Textures = new Dictionary<int, Texture2D>();
         }
 
         public static int Add(Texture2D texture)
         {
-            int id = _textures.Count + 1;
+            int id = Textures.Count + 1;
 
-            _textures.Add(id, texture);
+            Textures.Add(id, texture);
 
             return id;
         }
 
         public static Texture2D GetTexture(int id)
         {
-            return _textures[id];
+            return Textures[id];
         }
     }
 }

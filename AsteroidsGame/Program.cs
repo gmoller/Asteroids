@@ -14,7 +14,9 @@ namespace AsteroidsGame
         static void Main()
         {
             using (var game = new AsteroidsGame1())
+            {
                 game.Run();
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace GeneralUtilities
 {
     public static class RandomHelper
     {
-        private static Random Rand = new Random(); // For generating pseudo-random numbers
+        private static readonly Random Rand = new Random(); // For generating pseudo-random numbers
 
         public static float RandomNumber(float min, float max)
         {

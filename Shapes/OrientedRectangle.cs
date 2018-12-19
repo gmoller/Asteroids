@@ -20,10 +20,10 @@ namespace ShapesLibrary
         public Vector2 HalfExtend { get; }
         public float RotationInDegrees { get; }
 
-        public LineSegment Edge0 { get { if (_edge0 == null) { _edge0 = GetEdge(0); } return _edge0; } }
-        public LineSegment Edge1 { get { if (_edge1 == null) { _edge1 = GetEdge(1); } return _edge1; } }
-        public LineSegment Edge2 { get { if (_edge2 == null) { _edge2 = GetEdge(2); } return _edge2; } }
-        public LineSegment Edge3 { get { if (_edge3 == null) { _edge3 = GetEdge(3); } return _edge3; } }
+        public LineSegment Edge0 => _edge0 ?? (_edge0 = GetEdge(0));
+        public LineSegment Edge1 => _edge1 ?? (_edge1 = GetEdge(1));
+        public LineSegment Edge2 => _edge2 ?? (_edge2 = GetEdge(2));
+        public LineSegment Edge3 => _edge3 ?? (_edge3 = GetEdge(3));
 
         public Vector2 Corner0 { get { if (_vertex0 == null) { _vertex0 = GetVertex(new Vector2(Center.X - HalfExtend.X, Center.Y + HalfExtend.Y)); } return _vertex0.Value; } }
         public Vector2 Corner1 { get { if (_vertex1 == null) { _vertex1 = GetVertex(new Vector2(Center.X + HalfExtend.X, Center.Y + HalfExtend.Y)); } return _vertex1.Value; } }

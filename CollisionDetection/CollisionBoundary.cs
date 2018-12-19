@@ -9,8 +9,7 @@ namespace CollisionDetectionLibrary
 
         public CollisionBoundary(Shape shape)
         {
-            Shapes = new Shapes();
-            Shapes.Add(shape);
+            Shapes = new Shapes {shape};
         }
 
         public CollisionBoundary(Shapes shapes)
@@ -20,7 +19,7 @@ namespace CollisionDetectionLibrary
 
         public bool CollidesWith(CollisionBoundary collisionBoundary)
         {
-            bool collides = false;
+            bool collides;
 
             // check outer hull
             //Shape hull1 = Shapes.GetHull();
@@ -36,13 +35,11 @@ namespace CollisionDetectionLibrary
 
         private bool CheckEachShape(Shapes collisionBoundaryShapes1, Shapes collisionBoundaryShapes2)
         {
-            bool collides = false;
-
             foreach (Shape shape1 in collisionBoundaryShapes1)
             {
                 foreach (Shape shape2 in collisionBoundaryShapes2)
                 {
-                    collides = CollidesWith(shape1, shape2);
+                    bool collides = CollidesWith(shape1, shape2);
                     if (collides)
                     {
                         return true;
@@ -50,7 +47,7 @@ namespace CollisionDetectionLibrary
                 }
             }
 
-            return collides;
+            return false;
         }
 
         private bool CollidesWith(Shape shape1, Shape shape2)

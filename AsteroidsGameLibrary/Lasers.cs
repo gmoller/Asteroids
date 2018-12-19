@@ -8,8 +8,6 @@ namespace AsteroidsGameLibrary
     {
         private readonly List<Laser> _lasers;
 
-        public int Count => _lasers.Count;
-
         public Lasers()
         {
             _lasers = new List<Laser>();

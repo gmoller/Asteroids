@@ -8,8 +8,8 @@ namespace AsteroidsGameLibrary.Entities
 {
     public class Asteroid
     {
-        private float _asteroidSpeedPerSecond;
-        private Vector2 _direction;
+        private readonly float _asteroidSpeedPerSecond;
+        private readonly Vector2 _direction;
         private readonly float _rotationRateInRadians;
 
         public List<Vector2> Vertices { get; private set; } // center of asteroid
@@ -44,13 +44,15 @@ namespace AsteroidsGameLibrary.Entities
             _direction = new Vector2(RandomHelper.RandomNumber(-1.0f, 1.0f), RandomHelper.RandomNumber(-1.0f, 1.0f)); // TODO: use radians and convert to vector
             _asteroidSpeedPerSecond = 100.0f;
 
-            Vertices = new List<Vector2>(numberOfVertices);
-            Vertices.Add(new Vector2(RandomHelper.RandomNumber(-0.9f, -0.1f), RandomHelper.RandomNumber(-1.4f, -0.6f)));
-            Vertices.Add(new Vector2(RandomHelper.RandomNumber(0.1f, 0.9f), RandomHelper.RandomNumber(-1.4f, -0.6f)));
-            Vertices.Add(new Vector2(RandomHelper.RandomNumber(0.6f, 1.4f), RandomHelper.RandomNumber(-0.4f, 0.4f)));
-            Vertices.Add(new Vector2(RandomHelper.RandomNumber(0.1f, 0.9f), RandomHelper.RandomNumber(0.6f, 1.4f)));
-            Vertices.Add(new Vector2(RandomHelper.RandomNumber(-0.9f, -0.1f), RandomHelper.RandomNumber(0.6f, 1.4f)));
-            Vertices.Add(new Vector2(RandomHelper.RandomNumber(-1.4f, -0.6f), RandomHelper.RandomNumber(-0.4f, 0.4f)));
+            Vertices = new List<Vector2>(numberOfVertices)
+            {
+                new Vector2(RandomHelper.RandomNumber(-0.9f, -0.1f), RandomHelper.RandomNumber(-1.4f, -0.6f)),
+                new Vector2(RandomHelper.RandomNumber(0.1f, 0.9f), RandomHelper.RandomNumber(-1.4f, -0.6f)),
+                new Vector2(RandomHelper.RandomNumber(0.6f, 1.4f), RandomHelper.RandomNumber(-0.4f, 0.4f)),
+                new Vector2(RandomHelper.RandomNumber(0.1f, 0.9f), RandomHelper.RandomNumber(0.6f, 1.4f)),
+                new Vector2(RandomHelper.RandomNumber(-0.9f, -0.1f), RandomHelper.RandomNumber(0.6f, 1.4f)),
+                new Vector2(RandomHelper.RandomNumber(-1.4f, -0.6f), RandomHelper.RandomNumber(-0.4f, 0.4f))
+            };
 
             Color = Color.HotPink;
         }

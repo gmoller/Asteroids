@@ -11,7 +11,7 @@ namespace AsteroidsGameLibrary
 
             for (int i = 0; i < 1000; ++i)
             {
-                Asteroid asteroid = CreateAsteroid(asteroids);
+                Asteroid asteroid = CreateAsteroid();
 
                 bool asteroidCollision = asteroids.CollidesWith(asteroid);
                 bool middleX = new Range<float>(GameSettings.Resolution.X * Constants.ONE_THIRD, GameSettings.Resolution.X * Constants.TWO_THIRDS).ContainsValue(asteroid.Position.X);
@@ -30,7 +30,7 @@ namespace AsteroidsGameLibrary
             return asteroids;
         }
 
-        private static Asteroid CreateAsteroid(Asteroids asteroids)
+        private static Asteroid CreateAsteroid()
         {
             float x = RandomHelper.RandomNumber(20.0f, GameSettings.Resolution.X - 20.0f);
             float y = RandomHelper.RandomNumber(20.0f, GameSettings.Resolution.Y - 20.0f);

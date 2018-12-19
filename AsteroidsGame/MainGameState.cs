@@ -42,8 +42,8 @@ namespace AsteroidsGame
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            _hud.ScoreLabel = new AsteroidsGameLibrary.Controls.Label(new System.Numerics.Vector2(GameSettings.Resolution.X * Constants.ONE_THIRD, 0.0f), $"Score: {GameSettings.Score:00000}", AsteroidsGameLibrary.Controls.HorizontAlignment.Center, AsteroidsGameLibrary.Controls.VerticalAlignment.Top);
-            _hud.LivesLabel = new AsteroidsGameLibrary.Controls.Label(new System.Numerics.Vector2(GameSettings.Resolution.X * Constants.TWO_THIRDS, 0.0f), $"Lives: {GameSettings.Lives:0}", AsteroidsGameLibrary.Controls.HorizontAlignment.Center, AsteroidsGameLibrary.Controls.VerticalAlignment.Top);
+            _hud.ScoreLabel = new AsteroidsGameLibrary.Controls.Label(new System.Numerics.Vector2(GameSettings.Resolution.X * Constants.ONE_THIRD, 0.0f), $"Score: {GameSettings.Score:00000}", AsteroidsGameLibrary.Controls.HorizontalAlignment.Center);
+            _hud.LivesLabel = new AsteroidsGameLibrary.Controls.Label(new System.Numerics.Vector2(GameSettings.Resolution.X * Constants.TWO_THIRDS, 0.0f), $"Lives: {GameSettings.Lives:0}", AsteroidsGameLibrary.Controls.HorizontalAlignment.Center);
 
             _keyboard.Update(gameTime);
 

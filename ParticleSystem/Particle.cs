@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Numerics;
 using GeneralUtilities;
-using ShapesLibrary;
 
 namespace ParticleSystemLibrary
 {

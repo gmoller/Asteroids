@@ -45,11 +45,11 @@ namespace UnitTestProject1
             LineSegment b = new LineSegment(new Vector2(8.0f, 6.0f), new Vector2(13.0f, 6.0f));
             LineSegment c = new LineSegment(new Vector2(4.0f, 4.0f), new Vector2(13.0f, 6.0f));
 
-            // circle-linesegment
+            // circle-line segment
             Assert.IsFalse(ShapeCollisionDetection.CollidesWith(a, b));
             Assert.IsTrue(ShapeCollisionDetection.CollidesWith(a, c));
 
-            // linesegment-circle
+            // line segment-circle
             Assert.IsFalse(ShapeCollisionDetection.CollidesWith(b, a));
             Assert.IsTrue(ShapeCollisionDetection.CollidesWith(c, a));
         }

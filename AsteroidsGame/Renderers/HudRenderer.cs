@@ -8,17 +8,17 @@ namespace AsteroidsGame.Renderers
 {
     public static class HudRenderer
     {
-        public static void Draw(SpriteBatch spriteBatch, Hud _hud)
+        public static void Draw(SpriteBatch spriteBatch, Hud hud)
         {
-            SpriteFont spriteFont = SpriteFontManager.GetSpriteFont(_hud.SpriteFontId);
+            SpriteFont spriteFont = SpriteFontManager.GetSpriteFont(hud.SpriteFontId);
 
             Label lblScore = new Label(spriteFont);
-            Vector2 position = DetermineLabelPosition(_hud.ScoreLabel, spriteFont);
-            lblScore.Draw(spriteBatch, _hud.ScoreLabel.Text, position);
+            Vector2 position = DetermineLabelPosition(hud.ScoreLabel, spriteFont);
+            lblScore.Draw(spriteBatch, hud.ScoreLabel.Text, position);
 
             Label lblLives = new Label(spriteFont);
-            position = DetermineLabelPosition(_hud.LivesLabel, spriteFont);
-            lblLives.Draw(spriteBatch, _hud.LivesLabel.Text, position);
+            position = DetermineLabelPosition(hud.LivesLabel, spriteFont);
+            lblLives.Draw(spriteBatch, hud.LivesLabel.Text, position);
         }
 
         private static Vector2 DetermineLabelPosition(AsteroidsGameLibrary.Controls.Label label, SpriteFont spriteFont)
@@ -26,21 +26,21 @@ namespace AsteroidsGame.Renderers
             float x;
             float y;
 
-            switch (label.HorizontAlignment)
+            switch (label.HorizontalAlignment)
             {
-                case AsteroidsGameLibrary.Controls.HorizontAlignment.Left:
+                case AsteroidsGameLibrary.Controls.HorizontalAlignment.Left:
                     x = label.Position.X;
                     break;
-                case AsteroidsGameLibrary.Controls.HorizontAlignment.Center:
+                case AsteroidsGameLibrary.Controls.HorizontalAlignment.Center:
                     Vector2 size = spriteFont.MeasureString(label.Text);
                     x = label.Position.X - size.X * Constants.ONE_HALF;
                     break;
-                case AsteroidsGameLibrary.Controls.HorizontAlignment.Right:
+                case AsteroidsGameLibrary.Controls.HorizontalAlignment.Right:
                     size = spriteFont.MeasureString(label.Text);
                     x = label.Position.X - size.X;
                     break;
                 default:
-                    throw new NotImplementedException($"Label.HorizontAlignment [{label.HorizontAlignment}] not implemented.");
+                    throw new NotImplementedException($"Label.HorizontalAlignment [{label.HorizontalAlignment}] not implemented.");
             }
 
             switch (label.VerticalAlignment)

@@ -8,8 +8,8 @@ namespace AsteroidsGameLibrary.Entities
 {
     public class Laser
     {
-        private Vector2 _positionOffset; // position of hardpoint relative to center of parent (spaceship) facing east
-        private Color _color;
+        private readonly Vector2 _positionOffset; // position of hard point relative to center of parent (spaceship) facing east
+        private readonly Color _color;
         private bool _isFiring;
         private ParticleSystem _laserParticleSystem;
 

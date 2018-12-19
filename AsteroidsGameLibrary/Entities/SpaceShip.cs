@@ -46,9 +46,11 @@ namespace AsteroidsGameLibrary.Entities
             //front: new Vector2(0.0f, -50.0f)
             //_laser1 = new Laser(new Vector2(10.0f, -10.0f), new GeneralUtilities.Color(255, 0, 0, 255), particleTextureId); // red
             //_laser2 = new Laser(new Vector2(-10.0f, -10.0f), new GeneralUtilities.Color(0, 0, 255, 255), particleTextureId); // blue
-            _lasers = new Lasers();
-            _lasers.Add(new Laser(new Vector2(0.0f, -50.0f), new Color(255, 0, 0, 255), particleTextureId)); // red
-            _lasers.Add(new Laser(new Vector2(0.0f, -50.0f), new Color(0, 0, 255, 255), particleTextureId)); // blue
+            _lasers = new Lasers
+            {
+                new Laser(new Vector2(0.0f, -50.0f), new Color(255, 0, 0), particleTextureId), // red
+                new Laser(new Vector2(0.0f, -50.0f), new Color(0, 0, 255), particleTextureId)  // blue
+            };
         }
 
         public void RotateLeft(float f)

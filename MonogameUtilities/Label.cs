@@ -5,16 +5,11 @@ namespace MonogameUtilities
 {
     public class Label
     {
-        private SpriteFont _spriteFont;
+        private readonly SpriteFont _spriteFont;
 
         public Label(SpriteFont spriteFont)
         {
             _spriteFont = spriteFont;
-        }
-
-        public Vector2 MeasureText(string text)
-        {
-            return _spriteFont.MeasureString(text);
         }
 
         public void Draw(SpriteBatch spriteBatch, string text, Vector2 position)

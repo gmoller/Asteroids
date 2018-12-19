@@ -1,6 +1,5 @@
-﻿using System.Numerics;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GeneralUtilities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1
 {

@@ -5,7 +5,7 @@
         private readonly float _emissionRatePerSecond;
         private readonly ParticleEmitter _emitter;
         private Particles _particles;
-        private bool _continuous;
+        private readonly bool _continuous;
         private int _totalEmitted;
 
         private float _timeCounter;
