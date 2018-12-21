@@ -20,7 +20,7 @@ namespace AsteroidsGame
 
         private SpriteFont _spriteFont;
 
-        private FrameCounter _frameCounter = new FrameCounter();
+        private readonly FrameCounter _frameCounter = new FrameCounter();
         private Label _fpsLabel;
 
         public AsteroidsGame1()

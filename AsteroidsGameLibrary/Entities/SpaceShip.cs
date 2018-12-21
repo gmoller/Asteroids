@@ -51,8 +51,10 @@ namespace AsteroidsGameLibrary.Entities
             //_laser2 = new Laser(new Vector2(-10.0f, -10.0f), new GeneralUtilities.Color(0, 0, 255, 255), particleTextureId); // blue
             _lasers = new Lasers
             {
-                new Laser(new Vector2(0.0f, -Size.X / 2.0f), new Color(255, 0, 0), particleTextureId), // red
-                new Laser(new Vector2(0.0f, -Size.X / 2.0f), new Color(0, 0, 255), particleTextureId)  // blue
+                new Laser(new Vector2(0.0f, -Size.X / 2.0f), Color.Red, particleTextureId),
+                new Laser(new Vector2(0.0f, -Size.X / 2.0f), Color.Blue, particleTextureId),
+                new Laser(new Vector2(0.0f, -Size.X / 2.0f), Color.Green, particleTextureId),
+                new Laser(new Vector2(0.0f, -Size.X / 2.0f), Color.Gray, particleTextureId)
             };
 
             _engine = new SpaceShipEngine(this, particleTextureId);
@@ -83,7 +85,11 @@ namespace AsteroidsGameLibrary.Entities
             {
                 if (laser.CanShoot)
                 {
-                    laser.Shoot(Position, RotationInRadians);
+                    bool laserFired = laser.Shoot(Position, RotationInRadians);
+                    if (laserFired)
+                    {
+                        break;
+                    }
                 }
             }
         }

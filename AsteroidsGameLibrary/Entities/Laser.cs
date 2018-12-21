@@ -43,7 +43,7 @@ namespace AsteroidsGameLibrary.Entities
             _isFiring = false;
         }
 
-        public void Shoot(Vector2 parentPosition, float parentRotationInRadians)
+        public bool Shoot(Vector2 parentPosition, float parentRotationInRadians)
         {
             if (!_isFiring)
             {
@@ -60,7 +60,11 @@ namespace AsteroidsGameLibrary.Entities
                 _laserParticleSystem = new ParticleSystem(emitter, 10, 600.0f, false); // 600 per second
 
                 _isFiring = true;
+
+                return true;
             }
+
+            return false;
         }
 
         public void Remove()
