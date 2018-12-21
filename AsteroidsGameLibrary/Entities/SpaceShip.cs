@@ -11,14 +11,15 @@ namespace AsteroidsGameLibrary.Entities
         private readonly Lasers _lasers;
 
         private float _thrust;
-        private Vector2 _motionVectorCurrent;
         private Vector2 _motionVectorTo;
+        private readonly SpaceShipEngine _engine;
 
         public Vector2 Position { get; private set; } // center of spaceship
         public Vector2 Size { get; }
         public Vector2 Origin { get; }
         public float RotationInRadians { get; private set; }
         public int TextureId { get; }
+        public SpaceShipEngine Engine => _engine;
 
         public Lasers Lasers => _lasers;
 
@@ -33,6 +34,8 @@ namespace AsteroidsGameLibrary.Entities
             }
         }
 
+        public Vector2 MotionVectorCurrent { get; private set; }
+
         public SpaceShip(Vector2 position, float rotationInDegrees, int textureId, int particleTextureId)
         {
             Position = position;
@@ -40,7 +43,7 @@ namespace AsteroidsGameLibrary.Entities
             Origin = new Vector2(720 / 2.0f, 713 / 2.0f); // texture is 720x713
             RotationInRadians = rotationInDegrees.ToRadians();
             TextureId = textureId;
-            _motionVectorCurrent = Vector2.Zero;
+            MotionVectorCurrent = Vector2.Zero;
             _motionVectorTo = Vector2.Zero;
 
             //front: new Vector2(0.0f, -50.0f)
@@ -48,9 +51,11 @@ namespace AsteroidsGameLibrary.Entities
             //_laser2 = new Laser(new Vector2(-10.0f, -10.0f), new GeneralUtilities.Color(0, 0, 255, 255), particleTextureId); // blue
             _lasers = new Lasers
             {
-                new Laser(new Vector2(0.0f, -50.0f), new Color(255, 0, 0), particleTextureId), // red
-                new Laser(new Vector2(0.0f, -50.0f), new Color(0, 0, 255), particleTextureId)  // blue
+                new Laser(new Vector2(0.0f, -Size.X / 2.0f), new Color(255, 0, 0), particleTextureId), // red
+                new Laser(new Vector2(0.0f, -Size.X / 2.0f), new Color(0, 0, 255), particleTextureId)  // blue
             };
+
+            _engine = new SpaceShipEngine(this, particleTextureId);
         }
 
         public void RotateLeft(float f)
@@ -68,6 +73,8 @@ namespace AsteroidsGameLibrary.Entities
             _thrust += f;
             //var direction = new Vector2((float)Math.Sin(RotationInRadians), -(float)Math.Cos(RotationInRadians));
             //_motionVectorTo = direction;
+
+            _engine.Start(Position);
         }
 
         public void ShootGun()
@@ -86,7 +93,7 @@ namespace AsteroidsGameLibrary.Entities
             var direction = new Vector2((float)Math.Sin(RotationInRadians), -(float)Math.Cos(RotationInRadians));
             _motionVectorTo = direction;
 
-            _motionVectorCurrent = _motionVectorCurrent.Lerp(_motionVectorTo, deltaTime);
+            MotionVectorCurrent = MotionVectorCurrent.Lerp(_motionVectorTo, deltaTime);
 
             Move(deltaTime);
 
@@ -98,12 +105,14 @@ namespace AsteroidsGameLibrary.Entities
             {
                 laser.Update(deltaTime);
             }
+
+            _engine.Update(deltaTime);
         }
 
         private void Move(float deltaTime)
         {
             float thrustForFrame = _thrust * deltaTime;
-            Position = new Vector2(Position.X + _motionVectorCurrent.X * thrustForFrame, Position.Y + _motionVectorCurrent.Y * thrustForFrame);
+            Position = new Vector2(Position.X + MotionVectorCurrent.X * thrustForFrame, Position.Y + MotionVectorCurrent.Y * thrustForFrame);
 
             Position = Helper.WrapAround(Position, GameSettings.Resolution);
         }

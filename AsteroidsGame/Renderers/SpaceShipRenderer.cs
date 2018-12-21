@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using AsteroidsGameLibrary;
 using AsteroidsGameLibrary.Entities;
 using MonogameUtilities;
 using ShapesLibrary;
@@ -16,11 +17,19 @@ namespace AsteroidsGame.Renderers
             var origin = new Vector2(spaceShip.Origin.X, spaceShip.Origin.Y);
             spriteBatch.Draw(texture, body, sourceRectangle, Color.White, spaceShip.RotationInRadians, origin, SpriteEffects.None, 0.0f);
 
-            //DrawCollisionBoundary(spriteBatch, spaceShip);
+            if (GameSettings.ShowCollisionBoundaries)
+            {
+                DrawCollisionBoundary(spriteBatch, spaceShip);
+            }
 
             foreach (Laser laser in spaceShip.Lasers)
             {
                 LaserRenderer.Draw(spriteBatch, laser);
+            }
+
+            if (spaceShip.Engine.EngineStarted)
+            {
+                ParticleSystemRenderer.Draw(spriteBatch, spaceShip.Engine.Engine);
             }
         }
 

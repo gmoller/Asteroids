@@ -10,5 +10,6 @@ namespace AsteroidsGameLibrary
 
         public static int Lives { get; set; }
         public static int Score { get; set; }
+        public static bool ShowCollisionBoundaries { get; set; }
     }
 }

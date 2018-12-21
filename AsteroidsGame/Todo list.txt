@@ -4,14 +4,15 @@ X Keep and render score
 - Player win
 - Better effects:
   - Explosions
-  - Engine particles
+  X Engine particles
   - Sound
 - Menu/Hiscore/Pause/etc
 - Power ups
 - Multiplayer
 - Event based entities
 - Replay
-- Fix laser bug
+X Fix laser bug
 X Remove hard coded values
 - Star field background
 - Strafe left/right
+- Improve laser

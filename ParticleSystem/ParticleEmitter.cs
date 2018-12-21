@@ -1,4 +1,5 @@
-﻿using GeneralUtilities;
+﻿using System.Numerics;
+using GeneralUtilities;
 
 namespace ParticleSystemLibrary
 {
@@ -7,20 +8,25 @@ namespace ParticleSystemLibrary
     {
         private readonly InitialEmitterSettings _initialEmitterSettings;
 
-        public ParticleEmitter(InitialEmitterSettings initialEmitterSettings)
+        public Vector2 Position { get; set; }
+        public Range<float> EmitDirection { get; set; }
+
+        public ParticleEmitter(Vector2 position, InitialEmitterSettings initialEmitterSettings)
         {
+            Position = position;
             _initialEmitterSettings = initialEmitterSettings;
+            EmitDirection = initialEmitterSettings.Angle;
         }
 
         public Particle Emit(float deltaTime)
         {
             float life = DetermineLife(_initialEmitterSettings.Life);
-            float angle = DetermineAngle(_initialEmitterSettings.Angle);
+            float angle = DetermineAngle(EmitDirection);
             float speed = DetermineSpeed(_initialEmitterSettings.Speed);
             float size = DetermineSize(_initialEmitterSettings.Size);
             Color color = DetermineColor(_initialEmitterSettings.ColorRgba);
 
-            var particle = new Particle(_initialEmitterSettings.Position, life, angle, speed, color, size, _initialEmitterSettings.ParticleTextureId);
+            var particle = new Particle(Position, life, angle, speed, color, size, _initialEmitterSettings.ParticleTextureId);
 
             return particle;
         }

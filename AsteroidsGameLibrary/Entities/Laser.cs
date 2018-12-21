@@ -8,7 +8,7 @@ namespace AsteroidsGameLibrary.Entities
 {
     public class Laser
     {
-        private readonly Vector2 _positionOffset; // position of hard point relative to center of parent (spaceship) facing east
+        private readonly Vector2 _positionOffset; // position of hard point relative to center of parent (spaceship) facing north
         private readonly Color _color;
         private bool _isFiring;
         private ParticleSystem _laserParticleSystem;
@@ -50,8 +50,7 @@ namespace AsteroidsGameLibrary.Entities
                 Vector2 turretPosition = parentPosition + _positionOffset;
                 turretPosition = turretPosition.RotateAroundPoint(parentPosition, parentRotationInRadians);
 
-                var emitter = new ParticleEmitter(new InitialEmitterSettings(
-                    turretPosition,
+                var emitter = new ParticleEmitter(turretPosition, new InitialEmitterSettings(
                     new Range<float>(0.5f, 0.5f),
                     new Range<float>(parentRotationInRadians.ToDegrees()),
                     new Range<float>(2000.0f, 2500.0f),

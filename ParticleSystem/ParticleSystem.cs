@@ -1,4 +1,7 @@
-﻿namespace ParticleSystemLibrary
+﻿using System.Numerics;
+using GeneralUtilities;
+
+namespace ParticleSystemLibrary
 {
     public class ParticleSystem
     {
@@ -18,6 +21,18 @@
         public Particle LastParticle => _particles.LastParticle;
 
         public Particles Particles => _particles;
+
+        public Vector2 Position
+        {
+            get { return _emitter.Position; }
+            set { _emitter.Position = value; }
+        }
+
+        public Range<float> EmitDirection
+        {
+            get { return _emitter.EmitDirection; }
+            set { _emitter.EmitDirection = value; }
+        }
 
         public ParticleSystem(ParticleEmitter particleEmitter, int maximumParticles, float emissionRatePerSecond, bool continuous)
         {

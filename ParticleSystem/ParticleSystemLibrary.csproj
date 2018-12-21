@@ -35,6 +35,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmitterPrefabs.cs" />
     <Compile Include="InitialEmitterSettings.cs" />
     <Compile Include="Particles.cs" />
     <Compile Include="ParticleEmitter.cs" />

@@ -15,11 +15,13 @@ namespace GeneralUtilities
 
         public static byte RandomNumber(byte min, byte max)
         {
-            if (min > max) throw new Exception("Min must be less than or equal to max.");
+            Range<byte> range = new Range<byte>(min, max);
+            range = range.SortAscending();
+            //if (min > max) throw new Exception("Min must be less than or equal to max.");
 
-            byte o1 = (byte)(max - min + 1);
+            byte o1 = (byte)(range.Maximum - range.Minimum + 1);
             byte o2 = (byte)Rand.Next(0, o1);
-            byte o3 = (byte)(o2 + min);
+            byte o3 = (byte)(o2 + range.Minimum);
 
             return o3;
         }

@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Numerics" />
   </ItemGroup>
@@ -48,6 +49,7 @@
     <Compile Include="Hud.cs" />
     <Compile Include="Lasers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpaceShipEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CollisionDetection\CollisionDetectionLibrary.csproj">

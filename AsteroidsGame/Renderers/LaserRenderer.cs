@@ -9,7 +9,7 @@ namespace AsteroidsGame.Renderers
         {
             if (laser.IsFiring)
             {
-                ParticleSystemRenderer.Draw(spriteBatch, laser.LaserParticleSystem.Particles);
+                ParticleSystemRenderer.Draw(spriteBatch, laser.LaserParticleSystem);
             }
         }
     }

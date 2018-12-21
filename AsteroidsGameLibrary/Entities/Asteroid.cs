@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 using CollisionDetectionLibrary;
 using GeneralUtilities;
@@ -41,7 +42,9 @@ namespace AsteroidsGameLibrary.Entities
             Position = position;
             Size = size;
             _rotationRateInRadians = rotationRateInRadians;
-            _direction = new Vector2(RandomHelper.RandomNumber(-1.0f, 1.0f), RandomHelper.RandomNumber(-1.0f, 1.0f)); // TODO: use radians and convert to vector
+            int directionInDegrees = RandomHelper.RandomNumber(0, 360);
+            float directionInRadians = directionInDegrees.ToRadians();
+            _direction = directionInRadians.RadiansToHeadingVector2();
             _asteroidSpeedPerSecond = 100.0f;
 
             Vertices = new List<Vector2>(numberOfVertices)
@@ -54,7 +57,7 @@ namespace AsteroidsGameLibrary.Entities
                 new Vector2(RandomHelper.RandomNumber(-1.4f, -0.6f), RandomHelper.RandomNumber(-0.4f, 0.4f))
             };
 
-            Color = Color.HotPink;
+            Color = Color.Red;
         }
 
         public void Update(float deltaTime)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Text.RegularExpressions;
 
 namespace GeneralUtilities
 {
@@ -55,13 +56,6 @@ namespace GeneralUtilities
             return new Vector2((float)rotatedX, (float)rotatedY);
         }
 
-        //public static Vector2 ClampOnRectangle(this Vector2 point, Rectangle r)
-        //{
-        //    Vector2 clamp = new Vector2(point.X.ClampOnRange(new Range<float>(r.Left, r.Right)), point.Y.ClampOnRange(new Range<float>(r.Top, r.Bottom)));
-
-        //    return clamp;
-        //}
-
         public static float Dot(this Vector2 v, Vector2 v2)
         {
             return Vector2.Dot(v, v2);
@@ -79,6 +73,13 @@ namespace GeneralUtilities
         public static Vector2 Lerp(this Vector2 v, Vector2 v2, float x)
         {
             return Vector2.Lerp(v, v2, x);
+        }
+
+        public static float ToAngleAsRadians(this Vector2 v)
+        {
+            double d = Math.Atan2(v.X, v.Y);
+
+            return (float)d;
         }
     }
 
@@ -109,8 +110,24 @@ namespace GeneralUtilities
         public static float ClampOnRange(this float f, Range<float> range)
         {
             if (f < range.Minimum) return range.Minimum;
-            else if (range.Maximum < f) return range.Maximum;
-            else return f;
+            if (range.Maximum < f) return range.Maximum;
+
+            return f;
+        }
+
+        public static Vector2 RadiansToHeadingVector2(this float f)
+        {
+            return new Vector2((float)Math.Cos(f), (float)Math.Sin(f));
+        }
+    }
+
+    public static class IntExtensions
+    {
+        public static float ToRadians(this int degrees)
+        {
+            double r = degrees * Math.PI / 180.0f;
+
+            return (float)r;
         }
     }
 }

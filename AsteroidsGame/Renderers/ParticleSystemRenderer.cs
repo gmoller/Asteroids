@@ -6,9 +6,9 @@ namespace AsteroidsGame.Renderers
 {
     public static class ParticleSystemRenderer
     {
-        public static void Draw(SpriteBatch spriteBatch, Particles particles)
+        public static void Draw(SpriteBatch spriteBatch, ParticleSystem particleSystem)
         {
-            foreach (Particle particle in particles)
+            foreach (Particle particle in particleSystem.Particles)
             {
                 if (particle.IsAlive)
                 {
